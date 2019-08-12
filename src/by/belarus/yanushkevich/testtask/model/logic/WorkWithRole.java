@@ -11,7 +11,7 @@ public class WorkWithRole {
 	
 	public static boolean isFillRoleList(RoleList roleList) {
 		boolean answer = true;
-		if (roleList.getRoleList().size() <= roleList.getROLE_COUNT()) {
+		if (getRoleCount(roleList) <= roleList.getROLE_COUNT()) {
 			answer = false;
 		}
 		return answer;

@@ -15,8 +15,7 @@ public class WorkWithTelephoneList {
 		boolean answer = false;
 		Pattern pattern = Pattern.compile("375\\d{2}\\s{1}\\d{7}");
 		Matcher matcher = pattern.matcher(telephoneNumber);
-		boolean successfully = matcher.matches();
-		if (successfully) {
+		if (matcher.matches()) {
 			answer = true;
 		}
 		return answer;
