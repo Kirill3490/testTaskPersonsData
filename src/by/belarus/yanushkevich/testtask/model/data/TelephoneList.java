@@ -4,22 +4,16 @@ import java.util.LinkedList;
 
 public class TelephoneList {
 	private LinkedList<String> telephoneList;
-	private final int TELEPHONE_COUNT;
+	private final int MAX_TELEPHONE_COUNT;
 
 	public TelephoneList() {
 		this.telephoneList = new LinkedList<>();
-		this.telephoneList.add(0, "missing");
-		this.telephoneList.add(1, "missing");
-		this.telephoneList.add(2, "missing");
-		this.TELEPHONE_COUNT = 3;
+		this.MAX_TELEPHONE_COUNT = 3;
 	}
 
 	public TelephoneList(int telephoneNumberCount) {
 		this.telephoneList = new LinkedList<>();
-		this.TELEPHONE_COUNT = telephoneNumberCount;
-		for (int i = 0; i < this.TELEPHONE_COUNT; i++) {
-			this.telephoneList.add(i, "missing");
-		}
+		this.MAX_TELEPHONE_COUNT = telephoneNumberCount;
 	}
 
 	public LinkedList<String> getTelephoneList() {
@@ -31,15 +25,14 @@ public class TelephoneList {
 	}
 
 	public int getTELEPHONE_COUNT() {
-		return TELEPHONE_COUNT;
+		return MAX_TELEPHONE_COUNT;
 	}
 
 	@Override
 	public String toString() {
-		String answer = "Telephone number list: /n";
-		for (int i = 0; i < this.TELEPHONE_COUNT; i++) {
-			answer = "1) " + this.telephoneList.get(i) + ".\n";
-
+		String answer = "Telephone number list: \n";
+		for (int i = 0; i < this.telephoneList.size(); i++) {
+				answer += (i+1) + ") " + this.telephoneList.get(i) + ".\n";
 		}
 		return answer;
 	}
