@@ -61,12 +61,5 @@ public class WorkWithPerson {
 		return answer;
 	}
 
-	public static void savePerson() {
-
-	}
-
-	public static void deletePerson() {
-		
-	}
 
 }
