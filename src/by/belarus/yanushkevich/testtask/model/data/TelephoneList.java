@@ -1,8 +1,9 @@
 package by.belarus.yanushkevich.testtask.model.data;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class TelephoneList {
+public class TelephoneList implements Serializable{
 	private LinkedList<String> telephoneList;
 	private final int MAX_TELEPHONE_COUNT;
 

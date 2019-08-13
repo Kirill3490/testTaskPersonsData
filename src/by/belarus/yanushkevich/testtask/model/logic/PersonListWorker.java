@@ -1,5 +1,11 @@
 package by.belarus.yanushkevich.testtask.model.logic;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 import by.belarus.yanushkevich.testtask.model.data.Person;
 import by.belarus.yanushkevich.testtask.model.data.PersonList;
 
@@ -34,5 +40,28 @@ public class PersonListWorker {
 			answer.append((i + 1) + ")" + personList.getPersonList().get(i).getName() + "\n");
 		}
 		System.out.println(answer);
+	}
+
+	public static void savePersonListInFile(PersonList personList) {
+		String saveFileName = "PersonList.save";
+		try (ObjectOutputStream saveFile = new ObjectOutputStream(new FileOutputStream(saveFileName))) {
+			saveFile.writeObject(personList);
+			System.out.println("File has been saved");
+		} catch (Exception ex) {
+			System.out.println("File save failed\n" + ex.getMessage());
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static ArrayList<Person> loadPersonListFromFile() {
+		ArrayList<Person> personList = new ArrayList<>();
+		String loadFileName = "PersonList.save";
+		try (ObjectInputStream loadFile = new ObjectInputStream(new FileInputStream(loadFileName))){
+			personList=((ArrayList<Person>)loadFile.readObject());
+			System.out.println("File has been load");
+		} catch (Exception ex) {
+			System.out.println("File load failed\n" + ex.getMessage());
+		}
+		return personList;
 	}
 }

@@ -1,8 +1,9 @@
 package by.belarus.yanushkevich.testtask.model.data;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class RoleList {
+public class RoleList implements Serializable{
 	private LinkedList<String> roleList;
 	private final int MAX_ROLE_COUNT;
 	
