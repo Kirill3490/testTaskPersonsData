@@ -6,13 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		Person person = new Person("Kiryl", "Yanushkevich", "yan1995kv@gmail.com");
-		System.out.println(person.toString());
-		
+		Person person = new Person();
 		PersonAddScenario scenario = new PersonAddScenario();
-		scenario.workWithTelephoneList(person);
-		
+		scenario.personChangeScenario(person);
 	}
-
 }

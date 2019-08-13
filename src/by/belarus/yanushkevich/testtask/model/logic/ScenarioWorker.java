@@ -6,6 +6,7 @@ import by.belarus.yanushkevich.testtask.model.data.Person;
 
 public class ScenarioWorker {
 	static Scanner scanner = new Scanner(System.in);
+
 	public static boolean goOn() {
 		boolean answer = false;
 		int choice = 0;
@@ -23,7 +24,7 @@ public class ScenarioWorker {
 		}
 		return answer;
 	}
-	
+
 	public static void addTelephoneNumber(Person person) {
 		System.out.println("Enter telephone number");
 		String number = scanner.nextLine();
@@ -35,7 +36,7 @@ public class ScenarioWorker {
 			System.out.println("Check the entered number");
 		}
 	}
-	
+
 	public static void changeTelephoneNumber(Person person) {
 		System.out.println("Enter telephone number:");
 		String number = scanner.nextLine();
@@ -47,8 +48,93 @@ public class ScenarioWorker {
 			System.out.println("Check the entered number or index");
 		}
 	}
-	
-	public static void showTelephoneNumber(Person person) {
+
+	// Method showTelephoneNumber print in console all telephone number list that
+	// chosen person have
+	public static void showTelephoneNumberList(Person person) {
 		WorkWithTelephoneList.showTelephoneNumberList(person.getTelephoneList());
 	}
+
+	// Method showSomeTelephoneNumber print on console entered count of telephone
+	// Number that chosen person have
+	public static void showSomeTelephoneNumber(Person person) {
+		do {
+			System.out.println("Enter the telephone number count, that you want to see");
+			int telephoneNumberCount = scanner.nextInt();
+			if (telephoneNumberCount > WorkWithTelephoneList.getTelephoneListCount(person.getTelephoneList())) {
+				System.out.println("You enter wrong telephone number count");
+			} else {
+				System.out.println(WorkWithTelephoneList.showSomeTelephone(person.getTelephoneList(), telephoneNumberCount));
+			}
+		} while (goOn());
+	}
+
+	public static void addRole(Person person) {
+		System.out.println("Enter role");
+		String role = scanner.nextLine();
+		if (WorkWithPerson.addRole(person, role)) {
+			System.out.println("Role was added successfully");
+		} else {
+			System.out.println("Can't add more roles. The role list is full.");
+		}
+	}
+
+	// Method changeRole print on console that role was changed
+	public static void changeRole(Person person) {
+		System.out.println("Enter role");
+		String role = scanner.nextLine();
+		System.out.println("Enter role index:");
+		int index = scanner.nextInt();
+		if (WorkWithPerson.changeRole(person, role, index)) {
+			System.out.println("Role was changed successfully");
+		} else {
+			System.out.println("Check the entered index");
+		}
+	}
+
+	// Method showRoleList print in console all role list that chosen person have
+	public static void showRoleList(Person person) {
+		WorkWithRole.showRoleList(person.getRoleList());
+	}
+
+	// Method showSomeRole print on console entered count of roles that chosen
+	// person have
+	public static void showSomeRole(Person person) {
+		do {
+			System.out.println("Enter the role count, that you want to see");
+			int roleCount = scanner.nextInt();
+			if (roleCount > WorkWithRole.getRoleCount(person.getRoleList())) {
+				System.out.println("You enter wrong role count");
+			} else {
+				System.out.println(WorkWithRole.showSomeRole(person.getRoleList(), roleCount));
+			}
+		} while (goOn());
+
+	}
+
+	//Method setPersonName set name to chosen person
+	public static void setPersonName(Person person) {
+		System.out.println("Enter person name:");
+		String name = scanner.nextLine();
+		WorkWithPerson.setPersonName(person, name);
+	}
+
+	//Method setPersonSurname set surname to chosen person
+	public static void setPersonSurname(Person person) {
+		System.out.println("Entering person surname:");
+		String surname = scanner.nextLine();
+		WorkWithPerson.setSurname(person, surname);
+	}
+	
+	//Method setPersonEmail set email to chosen person
+	public static void setPersonEmail(Person person) {
+		System.out.println("Entering person email:");
+		String email = scanner.nextLine();
+		WorkWithPerson.setEmail(person, email);
+	}
+	
+	
+	
+	
+	
 }

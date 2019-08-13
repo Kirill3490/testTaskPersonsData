@@ -3,7 +3,7 @@ package by.belarus.yanushkevich.testtask.model.logic;
 import by.belarus.yanushkevich.testtask.model.data.Person;
 
 public class WorkWithPerson {
-	
+
 	public static void setPersonName(Person person, String name) {
 		person.setName(name);
 	}
@@ -36,28 +36,37 @@ public class WorkWithPerson {
 		}
 		return answer;
 	}
-	
-	public static void addRole(Person person, String role) {
+
+	// Method addRole return true if person role was added successfully
+	// or return false if person roleList was full
+	public static boolean addRole(Person person, String role) {
+		boolean answer = true;
 		if (!WorkWithRole.isFillRoleList(person.getRoleList())) {
 			WorkWithRole.addRole(person.getRoleList(), role);
+		} else {
+			answer = false;
 		}
+		return answer;
 	}
-	
-	public static void changeRole(Person person, String role, int roleIndex) {
-		WorkWithRole.changeRole(person.getRoleList(), role, roleIndex);
+
+	// Method changeRole return true if person role was changed successfully
+	// or false if was entering wrong index
+	public static boolean changeRole(Person person, String role, int roleIndex) {
+		boolean answer = false;
+		if (WorkWithRole.getRoleCount(person.getRoleList()) <= person.getRoleList().getROLE_COUNT()
+				&& WorkWithRole.getRoleCount(person.getRoleList()) > 0) {
+			WorkWithRole.changeRole(person.getRoleList(), role, roleIndex);
+			answer = true;
+		}
+		return answer;
 	}
-	
+
 	public static void savePerson() {
-		
+
 	}
-	
+
 	public static void deletePerson() {
 		
 	}
-	
-	public static Person createPerson() {
-		return new Person();
-	}
-	
-	
+
 }

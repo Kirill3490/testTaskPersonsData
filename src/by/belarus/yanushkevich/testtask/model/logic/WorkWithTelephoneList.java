@@ -36,7 +36,17 @@ public class WorkWithTelephoneList {
 	public static void showTelephoneNumberList(TelephoneList telephoneNumberList) {
 		System.out.println(telephoneNumberList.toString());
 	}
-
+	
+	//Method showSomeTelephone print on console entered count of telephone number
+	public static String showSomeTelephone(TelephoneList telephoneNumberList, int telephoneNumberCount) {
+		String answer = "Telephone number list:\n";
+		for (int i = 0; i < telephoneNumberCount; i++) {
+			answer += (i+1) + ")" + telephoneNumberList.getTelephoneList().get(i) + "\n";
+		}
+		
+		return answer;
+	}
+	
 	public static void changeNumber(TelephoneList telephoneNumberList, String telephoneNumber, int telephoneIndex) {
 		telephoneNumberList.getTelephoneList().set(telephoneIndex, telephoneNumber);
 	}
