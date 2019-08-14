@@ -37,7 +37,7 @@ public class PersonListWorker {
 		StringBuilder answer = new StringBuilder();
 		answer.append("Person list:\n");
 		for (int i = 0; i < personList.getPersonList().size(); i++) {
-			answer.append((i + 1) + ")" + personList.getPersonList().get(i).getName() + "\n");
+			answer.append((i + 1) + ")" + personList.getPersonList().get(i).getName() + " person ID:" + i +"\n");
 		}
 		System.out.println(answer);
 	}
@@ -45,12 +45,14 @@ public class PersonListWorker {
 	public static void savePersonListInFile(PersonList personList) {
 		String saveFileName = "PersonList.save";
 		try (ObjectOutputStream saveFile = new ObjectOutputStream(new FileOutputStream(saveFileName))) {
-			saveFile.writeObject(personList);
+			saveFile.writeObject(personList.getPersonList());
 			System.out.println("File has been saved");
 		} catch (Exception ex) {
 			System.out.println("File save failed\n" + ex.getMessage());
 		}
 	}
+	
+	
 	
 	@SuppressWarnings("unchecked")
 	public static ArrayList<Person> loadPersonListFromFile() {
@@ -64,4 +66,6 @@ public class PersonListWorker {
 		}
 		return personList;
 	}
+
+	
 }

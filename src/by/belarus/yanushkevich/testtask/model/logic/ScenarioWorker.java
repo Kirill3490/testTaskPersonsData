@@ -3,6 +3,7 @@ package by.belarus.yanushkevich.testtask.model.logic;
 import java.util.Scanner;
 
 import by.belarus.yanushkevich.testtask.model.data.Person;
+import by.belarus.yanushkevich.testtask.model.data.PersonList;
 
 public class ScenarioWorker {
 	static Scanner scanner = new Scanner(System.in);
@@ -25,6 +26,8 @@ public class ScenarioWorker {
 		return answer;
 	}
 
+	// Method addTelephoneNumber add new Telephone to the selected person's
+	// telephone list
 	public static void addTelephoneNumber(Person person) {
 		System.out.println("Enter telephone number");
 		String number = scanner.nextLine();
@@ -37,12 +40,15 @@ public class ScenarioWorker {
 		}
 	}
 
+	// Method changeTelephoneNumber change exist telephone number that contains in
+	// selected person's telephone list
 	public static void changeTelephoneNumber(Person person) {
 		System.out.println("Enter telephone number:");
 		String number = scanner.nextLine();
 		System.out.println("Enter telephone index:");
 		int index = scanner.nextInt();
-		if (WorkWithPerson.changeTelephoneNumber(person, number, index)) {
+		if (index >= 0 && index < person.getTelephoneList().getTelephoneList().size()
+				&& WorkWithPerson.changeTelephoneNumber(person, number, index)) {
 			System.out.println("Number was changed successfully");
 		} else {
 			System.out.println("Check the entered number or index");
@@ -64,11 +70,13 @@ public class ScenarioWorker {
 			if (telephoneNumberCount > WorkWithTelephoneList.getTelephoneListCount(person.getTelephoneList())) {
 				System.out.println("You enter wrong telephone number count");
 			} else {
-				System.out.println(WorkWithTelephoneList.showSomeTelephone(person.getTelephoneList(), telephoneNumberCount));
+				System.out.println(
+						WorkWithTelephoneList.showSomeTelephone(person.getTelephoneList(), telephoneNumberCount));
 			}
 		} while (goOn());
 	}
 
+	// Method addRole add new Role to the selected person's role list
 	public static void addRole(Person person) {
 		System.out.println("Enter role");
 		String role = scanner.nextLine();
@@ -79,13 +87,15 @@ public class ScenarioWorker {
 		}
 	}
 
-	// Method changeRole print on console that role was changed
+	// Method changeRole change exist role  that contains in
+	// selected person's role list
 	public static void changeRole(Person person) {
 		System.out.println("Enter role");
 		String role = scanner.nextLine();
 		System.out.println("Enter role index:");
 		int index = scanner.nextInt();
-		if (WorkWithPerson.changeRole(person, role, index)) {
+		if (index >= 0 && index < person.getRoleList().getRoleList().size()
+				&& WorkWithPerson.changeRole(person, role, index)) {
 			System.out.println("Role was changed successfully");
 		} else {
 			System.out.println("Check the entered index");
@@ -112,29 +122,37 @@ public class ScenarioWorker {
 
 	}
 
-	//Method setPersonName set name to chosen person
+	// Method setPersonName set name to chosen person
 	public static void setPersonName(Person person) {
 		System.out.println("Enter person name:");
 		String name = scanner.nextLine();
 		WorkWithPerson.setPersonName(person, name);
 	}
 
-	//Method setPersonSurname set surname to chosen person
+	// Method setPersonSurname set surname to chosen person
 	public static void setPersonSurname(Person person) {
 		System.out.println("Entering person surname:");
 		String surname = scanner.nextLine();
 		WorkWithPerson.setSurname(person, surname);
 	}
-	
-	//Method setPersonEmail set email to chosen person
+
+	// Method setPersonEmail set email to chosen person
 	public static void setPersonEmail(Person person) {
 		System.out.println("Entering person email:");
 		String email = scanner.nextLine();
 		WorkWithPerson.setEmail(person, email);
 	}
-	
-	
-	
-	
-	
+
+	// Method showPersonInformation print on console full Information about chosen
+	// person
+	public static void showPersonInformation(PersonList personList) {
+		System.out.println("Enter person id:");
+		int personID = scanner.nextInt();
+		if (personID >= 0 && personID < personList.getPersonList().size()) {
+			System.out.println(personList.getPersonList().get(personID).toString());
+		} else {
+			System.out.println("You enter wrong person ID");
+		}
+	}
+
 }

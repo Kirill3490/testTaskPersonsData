@@ -21,7 +21,7 @@ public class WorkWithPerson {
 	public static boolean addTelephoneNumber(Person person, String number) {
 		boolean answer = false;
 		if (WorkWithTelephoneList.isValidate(number)
-				&& !WorkWithTelephoneList.isFillTelephoneList(person.getTelephoneList())) {
+				&& WorkWithTelephoneList.isFillTelephoneList(person.getTelephoneList()) == false) {
 			WorkWithTelephoneList.addNumber(person.getTelephoneList(), number);
 			answer = true;
 		}
