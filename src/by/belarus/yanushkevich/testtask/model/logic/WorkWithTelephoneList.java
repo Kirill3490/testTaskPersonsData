@@ -23,7 +23,7 @@ public class WorkWithTelephoneList {
 
 	public static boolean isFillTelephoneList(TelephoneList telephoneNumberList) {
 		boolean answer = true;
-		if (telephoneNumberList.getTelephoneList().size() <= telephoneNumberList.getTELEPHONE_COUNT()) {
+		if (telephoneNumberList.getTelephoneList().size() < telephoneNumberList.getTELEPHONE_COUNT()) {
 			answer = false;
 		}
 		return answer;

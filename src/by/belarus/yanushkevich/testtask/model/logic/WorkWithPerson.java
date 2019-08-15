@@ -15,6 +15,9 @@ public class WorkWithPerson {
 	public static void setEmail(Person person, String email) {
 		if (WorkWithEmail.isValidate(email)) {
 			person.setEmail(email);
+			System.out.println("Email was added successfully");
+		} else {
+			System.out.println("You entered an invalid email");
 		}
 	}
 

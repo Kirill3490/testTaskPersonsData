@@ -87,7 +87,7 @@ public class ScenarioWorker {
 		}
 	}
 
-	// Method changeRole change exist role  that contains in
+	// Method changeRole change exist role that contains in
 	// selected person's role list
 	public static void changeRole(Person person) {
 		System.out.println("Enter role");
@@ -112,14 +112,13 @@ public class ScenarioWorker {
 	public static void showSomeRole(Person person) {
 		do {
 			System.out.println("Enter the role count, that you want to see");
-			int roleCount = scanner.nextInt();
-			if (roleCount > WorkWithRole.getRoleCount(person.getRoleList())) {
-				System.out.println("You enter wrong role count");
-			} else {
-				System.out.println(WorkWithRole.showSomeRole(person.getRoleList(), roleCount));
-			}
+				int roleCount = scanner.nextInt();
+				if (roleCount > WorkWithRole.getRoleCount(person.getRoleList())) {
+					System.out.println("You enter wrong role count");
+				} else {
+					System.out.println(WorkWithRole.showSomeRole(person.getRoleList(), roleCount));
+				}
 		} while (goOn());
-
 	}
 
 	// Method setPersonName set name to chosen person
@@ -147,12 +146,12 @@ public class ScenarioWorker {
 	// person
 	public static void showPersonInformation(PersonList personList) {
 		System.out.println("Enter person id:");
-		int personID = scanner.nextInt();
-		if (personID >= 0 && personID < personList.getPersonList().size()) {
-			System.out.println(personList.getPersonList().get(personID).toString());
-		} else {
-			System.out.println("You enter wrong person ID");
-		}
+			int personID = scanner.nextInt();
+			if (personID >= 0 && personID < personList.getPersonList().size()) {
+				System.out.println(personList.getPersonList().get(personID).toString());
+			} else {
+				System.out.println("You enter wrong person ID");
+			}
 	}
 
 }
